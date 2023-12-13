@@ -1,11 +1,19 @@
 package interfaz;
 import estructura.*;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * La clase Interfaz proporciona una interfaz de usuario para interactuar con el catálogo de productos de Apple.
+ * Permite al usuario seleccionar productos y agregarlos a un carrito de compras.
+ */
 public class Interfaz {
     Iphone iphone = new Iphone();
     Ipads ipad = new Ipads();
@@ -14,10 +22,13 @@ public class Interfaz {
 
     Scanner lector = new Scanner(System.in);
     Scanner lectorString = new Scanner(System.in);
-    
+     
+    /**
+     * Muestra el catálogo de productos y proporciona un menú para que el usuario interactúe con el catálogo.
+     * El usuario puede seleccionar productos para agregar al carrito de compras.
+     */
     public void mostrarCatalogo()
     {
-        
         int opcion;
         boolean salir = true;
         
@@ -88,8 +99,52 @@ public class Interfaz {
                     System.out.println("Gracias por usar el catálogo");
                     System.out.println("----------------------------");
                     salir = false;
+                    grabar();
                     System.exit(0);
                     break;
+                default:
+                    System.out.println("Opcion no disponible");
+                    mostrarCatalogo();
             } 
+    }
+
+    /**
+     * Lee el estado actual del carrito de compras desde un archivo.
+     * El estado del carrito se guarda en un archivo llamado "carrito.ser".
+     */
+    public void leer() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("carrito.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(carrito);
+            out.close();
+            fileOut.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    /**
+     * Guarda el estado actual del carrito de compras en un archivo.
+     * El estado del carrito se guarda en un archivo llamado "carrito.ser".
+     */
+    public void grabar() {
+        try {
+            FileInputStream fileIn = new FileInputStream("carrito.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            carrito = (Carrito) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Grabado correctamente");
+        } catch (IOException i) {
+            i.printStackTrace();
+            System.out.println("ERROR");
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("ERROR");
+            c.printStackTrace();
+            return;
+        }
+
     }
 }

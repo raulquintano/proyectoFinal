@@ -2,16 +2,25 @@ package estructura;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.Serializable;
-public class Carrito implements Serializable{
+
+/**
+ * La clase Carrito proporciona las funcionalidades que almacenan los productos con los que se interactúa en el catálogo.
+ * Permite al programa almacenar los productos seleccionados por el usuario y mostrarlos en el carrito de compras.
+ */
+public class Carrito implements Serializable {
     
     ArrayList<Iphone> carrito = new ArrayList<>();
     ArrayList<Ipads> carrito2 = new ArrayList<>();
     ArrayList<Airpods> carrito3 = new ArrayList<>();
-    Scanner lectorString = new Scanner(System.in);
-    Scanner lector = new Scanner(System.in);
+    transient Scanner lectorString = new Scanner(System.in);
+    transient Scanner lector = new Scanner(System.in);
     int total = 0;
     boolean salida = true;
     
+    /**
+     * Añade un producto de la clase Iphone al carrito de compras.
+     * @param iphone El producto de la clase Iphone que se añade al carrito.
+     */
     public void addIphone(Iphone iphone)
     {   
         if(iphone.getModelo().equalsIgnoreCase("Iphone 15 pro"))
@@ -225,6 +234,10 @@ public class Carrito implements Serializable{
               
     }
     
+    /**
+     * Añade un producto de la clase Ipads al carrito de compras.
+     * @param ipad El producto de la clase Ipads que se añade al carrito.
+     */
     public void addIpad(Ipads ipad)
     {
         if(ipad.getModelo().equalsIgnoreCase("Ipad Pro"))
@@ -376,6 +389,10 @@ public class Carrito implements Serializable{
         }
     }
     
+    /**
+     * Añade un producto de la clase Airpods al carrito de compras.
+     * @param airpods El producto de la clase Airpods que se añade al carrito.
+     */
     public void addAirpods(Airpods airpods)
     {
         if(airpods.getModelo().equalsIgnoreCase("Airpods 3") || airpods.getModelo().equalsIgnoreCase("Airpods pro") || airpods.getModelo().equalsIgnoreCase("Airpods Max"))
@@ -450,6 +467,9 @@ public class Carrito implements Serializable{
         }
     } 
     
+    /**
+     * Muestra el carrito de compras con los productos añadidos.
+     */
     public void mostrarCarrito()
     {
         System.out.println("CARRITO");
@@ -472,6 +492,12 @@ public class Carrito implements Serializable{
     }
     
     
+    /**
+     * Elimina un producto del carrito de compras.
+     * @param iphone El producto de la clase Iphone que se elimina del carrito.
+     * @param ipad El producto de la clase Ipads que se elimina del carrito.
+     * @param airpods El producto de la clase Airpods que se elimina del carrito.
+     */
     public void eliminarProducto(Iphone iphone, Ipads ipad, Airpods airpods)
     {
         System.out.println("¿Qué producto desea retirar de la cesta?");
@@ -657,5 +683,14 @@ public class Carrito implements Serializable{
             System.out.println("Producto no encontrado");
         }        
     }   
+
+    /**
+     * Devuelve el valor del objeto.
+     * @return El valor del objeto.
+     */
+    public String toString()
+    {
+        return carrito.toString() + carrito2.toString() + carrito3.toString();
+    }
     
 }

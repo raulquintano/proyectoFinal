@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"estructura","l":"Airpods"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"estructura","l":"Carrito"},{"p":"interfaz","l":"Interfaz"},{"p":"estructura","l":"Ipads"},{"p":"estructura","l":"Iphone"},{"p":"principal","l":"Main"}]
