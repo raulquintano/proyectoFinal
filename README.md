@@ -30,7 +30,7 @@ Pulsando 5, podrá gestionar el carrito, de modo que puede eliminar el producto 
 
 Finalmente, pulsando 6, saldrá del programa, grabando toda la información procesada durante su ejecución mediante la serialización.
 
-## Diagrama UMl
+## Diagrama UML
 
 [UML](UMLCatalogo.png)
 En este archivo se puede visualizar la estructura del programa
