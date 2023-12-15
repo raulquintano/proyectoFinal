@@ -402,6 +402,7 @@ public class Carrito implements Serializable {
                 System.out.println("¿Quieres personalizarlos?");
                 System.out.println("1) Si");
                 System.out.println("2) No");
+                System.out.println("0) Volver al menú principal");
                 int opcion = lector.nextInt();
                 if(opcion == 1)
                 {
@@ -416,6 +417,10 @@ public class Carrito implements Serializable {
                     carrito3.add(airpods);
                     System.out.println("Añadido correctamente");
                     total = total +200;
+                }
+                else if(opcion == 0)
+                {
+                    salida = false;
                 }
             }
             else if(airpods.getModelo().equalsIgnoreCase("Airpods pro"))
@@ -423,6 +428,7 @@ public class Carrito implements Serializable {
                 System.out.println("¿Quieres personalizarlos?");
                 System.out.println("1) Si");
                 System.out.println("2) No");
+                System.out.println("0) Volver al menú principal");
                 int opcion = lector.nextInt();
                 if(opcion == 1)
                 {
@@ -437,6 +443,10 @@ public class Carrito implements Serializable {
                     carrito3.add(airpods);
                     System.out.println("Añadido correctamente");
                     total = total +279;
+                }
+                else if(opcion == 0)
+                {
+                    salida = false;
                 }
             }
             else if(airpods.getModelo().equalsIgnoreCase("Airpods Max"))
@@ -444,6 +454,7 @@ public class Carrito implements Serializable {
                 System.out.println("¿Quieres personalizarlos?");
                 System.out.println("1) Si");
                 System.out.println("2) No");
+                System.out.println("0) Volver al menú principal");
                 int opcion = lector.nextInt();
                 if(opcion == 1)
                 {
@@ -458,6 +469,10 @@ public class Carrito implements Serializable {
                     carrito3.add(airpods);
                     System.out.println("Añadido correctamente");
                     total = total +579;
+                }
+                else if(opcion == 0)
+                {
+                    salida = false;
                 }
             }         
         }

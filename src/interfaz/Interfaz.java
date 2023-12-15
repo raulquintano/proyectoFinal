@@ -31,6 +31,8 @@ public class Interfaz {
     {
         int opcion;
         boolean salir = true;
+        do{
+
         
             System.out.println("-------------------------------");
             System.out.println("BIENVENIDO AL CATALOGO DE APPLE");
@@ -57,7 +59,6 @@ public class Interfaz {
                     System.out.println("--teclee el modelo que desea--");
                     iphone.setModelo(lectorString.nextLine());
                     carrito.addIphone(iphone);
-                    mostrarCatalogo();
                     break;
                 
                 case 2:                    
@@ -70,29 +71,28 @@ public class Interfaz {
                     System.out.println("--teclee el modelo que desea--");
                     ipad.setModelo(lectorString.nextLine());
                     carrito.addIpad(ipad);
-                    mostrarCatalogo();
                     break;
                 case 3:
                     airpods = new Airpods();
                     System.out.println("Modelos disponibles:");
-                    System.out.println("-> Airpods 3");
-                    System.out.println("-> Airpods pro");
-                    System.out.println("-> Airpods Max");
+                    System.out.print("-> Airpods 3");
+                    System.out.println("     | 200€");
+                    System.out.print("-> Airpods pro");
+                    System.out.println("   | 279€");
+                    System.out.print("-> Airpods Max");
+                    System.out.println("   | 579€");
                     System.out.println("--teclee el modelo que desea--");
                     airpods.setModelo(lectorString.nextLine());
                     carrito.addAirpods(airpods);
-                    mostrarCatalogo();
                     break;
 
 
                 case 4:
                     carrito.mostrarCarrito();
-                    mostrarCatalogo();
                     break;
                 
                 case 5:
                     carrito.eliminarProducto(iphone, ipad, airpods);
-                    mostrarCatalogo();
                     break;
                 case 6:
                     System.out.println("----------------------------");
@@ -104,14 +104,16 @@ public class Interfaz {
                     break;
                 default:
                     System.out.println("Opcion no disponible");
-                    mostrarCatalogo();
-            } 
+            }
+        }while(opcion!=6); 
     }
 
     /**
      * Lee el estado actual del carrito de compras desde un archivo.
      * El estado del carrito se guarda en un archivo llamado "carrito.ser".
      */
+
+
     public void leer() {
         try {
             FileOutputStream fileOut = new FileOutputStream("carrito.ser");
@@ -119,6 +121,7 @@ public class Interfaz {
             out.writeObject(carrito);
             out.close();
             fileOut.close();
+            System.out.println("Grabado correctamente");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -135,7 +138,7 @@ public class Interfaz {
             carrito = (Carrito) in.readObject();
             in.close();
             fileIn.close();
-            System.out.println("Grabado correctamente");
+            System.out.println("Leer correctamente");
         } catch (IOException i) {
             i.printStackTrace();
             System.out.println("ERROR");
